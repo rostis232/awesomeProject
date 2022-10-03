@@ -54,7 +54,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
 	err = parsedTemplate.Execute(w, nil)
 	if err != nil {
-		fmt.Println("error parsing template ", err)
+		//TODO: Check the error
+		fmt.Println("error parsing template", err)
 		return
 	}
 }
@@ -70,7 +71,7 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 	for _, page := range pages {
 		name := filepath.Base(page)
 		ts, err := template.New(name).Funcs(functions).ParseFiles(page)
-		fmt.Println("Page is currently", page)
+		//fmt.Println("Page is currently", page)
 
 		matches, err := filepath.Glob("./templates/*.layout.tmpl")
 		if err != nil {
