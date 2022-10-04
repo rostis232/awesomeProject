@@ -54,7 +54,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	parsedTemplate, _ := template.ParseFiles("./templates/" + tmpl)
 	err = parsedTemplate.Execute(w, nil)
 	if err != nil {
-		//TODO: Check the error
+		//FIXME: Check the error
 		fmt.Println("error parsing template", err)
 		return
 	}
